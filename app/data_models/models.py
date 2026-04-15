@@ -3,11 +3,12 @@ Data models for structured outputs from agents.
 """
 from typing import Optional, Dict, List
 from pydantic import BaseModel, Field
+from app.types.types import StateModeType
 
 
 class PlannerOutput(BaseModel):
     """Output model for planner agent."""
-    mode: str = Field(description="Either 'q&a' or 'task_execution'")
+    mode: str = Field(description='Choices: "' + '", "'.join(StateModeType) + '"')
 
 
 class ClarifyOutput(BaseModel):

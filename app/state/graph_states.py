@@ -1,16 +1,19 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Literal, Any
+from typing import List, Optional, Dict
 from langchain_core.messages import AnyMessage
+from app.types.types import StateModeType
 
 
 class GraphState(BaseModel):
+    DEFAULT_STATE_MODE: StateModeType = "q&a"
+
     # conversational context
     messages: List[AnyMessage] = Field(default_factory=list)
 
     query: Optional[str] = None
 
     # planner node (validated)
-    mode: Literal["q&a", "task_execution"] = None           # "qa" | "task_execution"
+    mode: StateModeType = None           # "qa" | "task_execution"
 
     # -------- q&a --------
     # retrieval
