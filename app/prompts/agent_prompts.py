@@ -20,7 +20,7 @@ Input:
 - A user message describing their request.
 
 Output:
-- mode: choices are: "{'" or "'.join(StateModeType)}\""""
+- mode: choices are: "{'" or "'.join(get_args(StateModeType))}\""""
 
 PLANNER_PROMPT = ChatPromptTemplate.from_messages(
     [
