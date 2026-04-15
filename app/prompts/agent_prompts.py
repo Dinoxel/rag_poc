@@ -1,15 +1,10 @@
-'''
+"""
 this file contains prompt templates for various agent operations
-'''
+"""
 from langchain_core.prompts import ChatPromptTemplate
 from app.types.types import StateModeType
 
-PLANNER_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            f"""
-You are a planner agent for an AI system.
+PLANNER_SYSTEM_PROMPT = f"""You are a planner agent for an AI system.
 
 Your job:
 1. Determine the user's intent and choose a mode:
@@ -25,18 +20,16 @@ Input:
 - A user message describing their request.
 
 Output:
-- mode: choices are: "{'" or "'.join(StateModeType)}"
-            """
-        ),
+- mode: choices are: "{'" or "'.join(StateModeType)}\""""
+
+PLANNER_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", PLANNER_SYSTEM_PROMPT),
         ("human", "{input}")
     ]
 )
 
-CLARIFY_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            """You are a clarification agent for a task execution system.
+CLARIFY_SYSTEM_PROMPT = """You are a clarification agent for a task execution system.
 
 Your role is to determine whether the user's request contains enough information
 to safely and correctly execute the requested task.
@@ -59,16 +52,15 @@ Output format (JSON only):
 "collected_fields": {{ "<field_name>": "<value>" }},
 "missing_fields": ["<description_of_missing_info>", "..."]
 }}"""
-        ),
+
+CLARIFY_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", CLARIFY_SYSTEM_PROMPT),
         ("human", "{input}")
     ]
 )
 
-SCHEDULER_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            """You are an AI scheduler for a task execution system.
+SCHEDULER_SYSTEM_PROMPT = """You are an AI scheduler for a task execution system.
 
 Your job is to generate a clear, high-level action plan for executing the user's task.
 
@@ -88,16 +80,15 @@ Input:
 
 Output:
 - action_steps: a list of ordered action steps"""
-        ),
+
+SCHEDULER_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", SCHEDULER_SYSTEM_PROMPT),
         ("human", "{input}")
     ]
 )
 
-ANSWER_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        (
-            "system",
-            """You are an AI assistant responsible for producing the FINAL response to the user.
+ANSWER_SYSTEM_PROMPT = """You are an AI assistant responsible for producing the FINAL response to the user.
 
 You operate in exactly ONE of the following modes, which will be provided in the input.
 
@@ -148,7 +139,10 @@ Input you will receive:
 
 Output:
 - A single, well-structured natural language response to the user."""
-        ),
+
+ANSWER_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", ANSWER_SYSTEM_PROMPT),
         ("human", "{input}")
     ]
 )
