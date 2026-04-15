@@ -31,8 +31,6 @@ PLANNER_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
-
-
 CLARIFY_PROMPT = ChatPromptTemplate.from_messages(
     [
         (
@@ -67,7 +65,6 @@ CLARIFY_PROMPT = ChatPromptTemplate.from_messages(
         ("human", "{input}")
     ]
 )
-
 
 SCHEDULER_PROMPT = ChatPromptTemplate.from_messages(
     [

@@ -7,11 +7,11 @@ from app.core.config import llm_generation
 from app.state.graph_states import GraphState
 from langgraph.types import interrupt
 
-
 # Create clarify chain
 clarify_chain = (
-    CLARIFY_PROMPT | llm_generation.with_structured_output(ClarifyOutput)
+        CLARIFY_PROMPT | llm_generation.with_structured_output(ClarifyOutput)
 )
+
 
 def clarify_node(state: GraphState) -> dict:
     '''
@@ -32,7 +32,6 @@ def clarify_node(state: GraphState) -> dict:
             "missing_fields": []
         }
 
-
     input_text = f"Original query: {state.query}\n"
     if state.clarification_history:
         input_text += "Clarifications provided:\n"
@@ -47,7 +46,6 @@ def clarify_node(state: GraphState) -> dict:
     # 2️. USE result, not state
     new_missing_fields = result.missing_fields or []
     new_collected_fields = result.collected_fields or {}
-
 
     # 3. If missing → interrupt
     if new_missing_fields:

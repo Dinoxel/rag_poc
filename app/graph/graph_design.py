@@ -11,9 +11,6 @@ from app.agent_nodes.answer_node import answer_node
 from langchain_core.runnables.graph import CurveStyle, MermaidDrawMethod, NodeStyles
 from langgraph.checkpoint.memory import MemorySaver
 
-
-
-
 main_graph = StateGraph(GraphState)
 
 main_graph.add_node("planner", planner_node)

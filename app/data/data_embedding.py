@@ -18,13 +18,12 @@ from langchain_core.documents import Document
 
 from app.core.config import slm_embedding
 
-
 _VECTORSTORE: Optional[InMemoryVectorStore] = None
 
 
 def build_vectorstore_and_save_json(
-    input_directory: str,
-    output_file: str,
+        input_directory: str,
+        output_file: str,
 ) -> InMemoryVectorStore:
     """
     1. Read all .txt files from input_directory

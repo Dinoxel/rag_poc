@@ -8,7 +8,6 @@ from pathlib import Path
 
 import tiktoken
 
-
 # Initialize tokenizer
 tokenizer = tiktoken.get_encoding("cl100k_base")
 

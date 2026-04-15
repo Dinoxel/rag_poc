@@ -35,7 +35,4 @@ def similarity_search_with_score_tool(query: str, k: int = 3) -> str:
             f"Content:\n{doc.page_content}\n"
         )
 
-    return "\n" + "="*60 + "\n".join(text_pieces)
-
-
-
+    return "\n" + "=" * 60 + "\n".join(text_pieces)

@@ -6,7 +6,6 @@ from app.prompts.agent_prompts import ANSWER_PROMPT
 from app.core.config import llm_generation
 from app.state.graph_states import GraphState
 
-
 answer_chain = ANSWER_PROMPT | llm_generation
 
 
@@ -30,9 +29,9 @@ def answer_node(state: GraphState) -> dict:
 
     elif state.mode == "task_execution":
         if state.scheduler_confirmed:
-                steps_text = "\n".join(
-                    f"{idx+1}. {step}" for idx, step in  enumerate(state.action_steps)
-                )
+            steps_text = "\n".join(
+                f"{idx + 1}. {step}" for idx, step in enumerate(state.action_steps)
+            )
 
         input_text = f"""
                         User request:

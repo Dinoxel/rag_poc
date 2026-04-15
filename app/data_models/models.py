@@ -16,10 +16,8 @@ class ClarifyOutput(BaseModel):
     missing_fields: Optional[List[str]] = Field(default=None, description="Required fields that are missing")
 
 
-
 class SchedulerOutput(BaseModel):
     """
     Output of the scheduler/planning step.
     """
     action_steps: List[str] = Field(description="List of action steps to be taken")
-

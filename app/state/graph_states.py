@@ -24,7 +24,6 @@ class GraphState(BaseModel):
 
     # human-in-the-loop
     clarification_history: List[str] = Field(default_factory=list)
-    collected_fields: Dict[str, Any] = Field(default_factory=dict)
     missing_fields: List[str] = Field(default_factory=list)
     scheduler_confirmed: Optional[bool] = None
     clarify_round: int = 0

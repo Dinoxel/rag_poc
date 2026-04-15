@@ -11,7 +11,7 @@ def retrieval_node(state: GraphState) -> dict:
     """
     Graph node responsible ONLY for retrieval.
     """
-    
+
     print("\n[RETRIEVAL NODE] Starting...")
     print(f"  - Query: {state.query}")
 
@@ -25,7 +25,7 @@ def retrieval_node(state: GraphState) -> dict:
             {"query": state.query, "k": 3}
         )
 
-        
+
     except Exception as e:
         error_msg = f"Retrieval failed: {e}"
         print(f"  Error: {error_msg}\n")
@@ -35,5 +35,5 @@ def retrieval_node(state: GraphState) -> dict:
 
     return {
         "retrieved_context": retrieved_context
-       
+
     }

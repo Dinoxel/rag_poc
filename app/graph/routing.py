@@ -8,6 +8,7 @@ includes:
 
 from app.state.graph_states import GraphState
 
+
 def route_by_mode(state: GraphState) -> str:
     """
     Receives the current GraphState:mode and routes to the appropriate graph based on mode
@@ -22,7 +23,9 @@ def route_by_mode(state: GraphState) -> str:
     if state.mode == "task_execution":
         return "task_execution"
 
+
 from app.state.graph_states import GraphState
+
 
 def route_after_clarify(state: GraphState):
     '''
@@ -42,4 +45,3 @@ def route_after_confirmation(state: GraphState) -> str:
 
     # If not confirmed, re-run scheduler
     return "scheduler"
-

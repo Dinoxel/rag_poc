@@ -14,7 +14,7 @@ def run_graph_cli():
 
     # initial user query
     user_query = input("> ")
-    
+
     # initialize GraphState
     initial_state = GraphState(
         query=user_query,
@@ -33,11 +33,11 @@ def run_graph_cli():
     result = poc_graph.invoke(initial_state, config=config)
 
     print(f"  - Mode: {result.get('mode')}")
-    print(f"  - Retrieved Context: {result.get('retrieved_context')[:100] if result.get('retrieved_context') else None}...")
+    print(
+        f"  - Retrieved Context: {result.get('retrieved_context')[:100] if result.get('retrieved_context') else None}...")
     print(f"  - Error: {result.get('error')}")
     print(f"  - Missing Fields: {result.get('missing_fields')}")
     print(f"  - Has Interrupt: {'__interrupt__' in result}\n")
-
 
     # handle interrupts (clarify / confirm)
     while "__interrupt__" in result:
@@ -65,22 +65,19 @@ def run_graph_cli():
 
         # user input
         user_response = input("> ")
-        
 
         # resume graph
         result = poc_graph.invoke(
             Command(resume=user_response),
             config=config
         )
-        
 
     print("\n=== FINAL ANSWER ===")
     print(
-    result.get("final_answer").content
-    if result.get("final_answer")
-    else "No answer generated"
-)
-
+        result.get("final_answer").content
+        if result.get("final_answer")
+        else "No answer generated"
+    )
 
 
 if __name__ == "__main__":

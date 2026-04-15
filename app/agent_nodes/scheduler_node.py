@@ -9,8 +9,8 @@ from app.core.config import llm_generation
 
 # Create scheduler chain
 scheduler_chain = (
-    SCHEDULER_PROMPT
-    | llm_generation.with_structured_output(SchedulerOutput)
+        SCHEDULER_PROMPT
+        | llm_generation.with_structured_output(SchedulerOutput)
 )
 
 
