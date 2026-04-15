@@ -1,6 +1,6 @@
-'''
+"""
 this file contains the answer node for both Q&A and task execution flows.
-'''
+"""
 
 from app.prompts.agent_prompts import ANSWER_PROMPT
 from app.core.config import llm_generation

@@ -1,7 +1,7 @@
 # app/agents/nodes/retrieval_node.py
-'''
+"""
 retrieval node for retrieving relevant documents based on query
-'''
+"""
 
 from app.tools.agent_tools import similarity_search_with_score_tool
 from app.state.graph_states import GraphState

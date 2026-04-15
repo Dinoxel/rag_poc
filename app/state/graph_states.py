@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict
 from langchain_core.messages import AnyMessage
-from app.types.types import StateModeType
+from app.types import StateModeType
 
 
 class GraphState(BaseModel):
@@ -13,7 +13,7 @@ class GraphState(BaseModel):
     query: Optional[str] = None
 
     # planner node (validated)
-    mode: StateModeType = None           # "qa" | "task_execution"
+    mode: StateModeType = None           # "q&a" | "task_execution" | "escalate"
 
     # -------- q&a --------
     # retrieval
@@ -22,6 +22,9 @@ class GraphState(BaseModel):
 
 
     # -------- task execution --------
+    # action type detection
+    action_type: Optional[str] = None  # "create_invoice", "send_quote", "check_payment_status"
+
     # extracted / clarified task info
     collected_fields: Dict[str, Optional[str]] = Field(default_factory=dict)
 
@@ -35,6 +38,11 @@ class GraphState(BaseModel):
     # scheduler
     action_steps: List[str] = Field(default_factory=list)
     error: Optional[str] = None
+
+    # escalation
+    should_escalate: bool = False
+    escalation_reasons: List[str] = Field(default_factory=list)
+    escalated: bool = False
 
     # final answer / result
     final_answer: Optional[str] = None
