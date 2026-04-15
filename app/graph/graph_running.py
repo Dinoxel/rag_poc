@@ -14,6 +14,9 @@ def run_graph_cli():
 
     # initial user query
     user_query = input("> ")
+    while user_query.strip() == "":
+        print("Input cannot be empty. Please enter your request:")
+        user_query = input("> ")
 
     # initialize GraphState
     initial_state = GraphState(
