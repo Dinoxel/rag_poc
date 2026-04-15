@@ -8,15 +8,20 @@ from app.state.graph_states import GraphState
 from app.graph.graph_design import poc_graph
 
 
+def handle_user_input():
+    user_query = input("> ")
+    while user_query.strip() == "":
+        print("Input cannot be empty. Please enter your request:")
+        user_query = input("> ")
+
+    return user_query
+
 def run_graph_cli():
     print("=== Agentic System CLI ===")
     print("Please enter your request:\n")
 
     # initial user query
-    user_query = input("> ")
-    while user_query.strip() == "":
-        print("Input cannot be empty. Please enter your request:")
-        user_query = input("> ")
+    user_query = handle_user_input()
 
     # initialize GraphState
     initial_state = GraphState(
@@ -67,7 +72,7 @@ def run_graph_cli():
             print(interrupt_info)
 
         # user input
-        user_response = input("> ")
+        user_response = handle_user_input()
 
         # resume graph
         result = poc_graph.invoke(
