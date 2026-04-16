@@ -28,7 +28,9 @@ START → Planner
   └→ Escalate: escalation → END (direct)
 ```
 
-![System Architecture](./graph_diagram.png)
+**System Architecture Diagram:**
+
+![System Architecture](./app/graph/graph_diagram.png)
 
 ---
 
@@ -91,9 +93,9 @@ python -m app.graph.graph_running
 
 ### Test
 ```bash
-python test_clarification.py    # Clarification tests
-python test_escalation.py        # Escalation tests
-python test_direct_escalation.py # Direct escalation tests
+python -m test.test_clarification     # Clarification tests
+python -m test.test_escalation        # Escalation tests
+python -m test.test_direct_escalation # Direct escalation tests
 ```
 
 ---
@@ -163,8 +165,12 @@ app/
 ├── tools/            # Field validators
 └── types/            # Type definitions
 
+test/                 # Test suites
+├── test_clarification.py
+├── test_escalation.py
+└── test_direct_escalation.py
+
 docs/                 # Documentation
-test_*.py            # Test suites
 ```
 
 ---
